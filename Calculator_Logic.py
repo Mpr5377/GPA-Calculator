@@ -34,12 +34,37 @@ def calculate_gpa(file):
         ----------------------------------- = GPA
                    Credit Hours
     """
-    GPA = 0
-    f = open(file,"r")
+    # total_credit_hours will be used as a counter variable to keep track of the total number of credit hours taken
+    total_credit_hours = 0
+
+    # total_weight will be used to keep track of the summation of the Grade * Credit Hours for each class
+    total_weight = 0
+
+    # Open the file that is passed in as read only
+    f = open(file, "r")
+
+    # Read the first line to avoid headers in the for loop
+    f.readline()
+
+    # Parse each line in the file collecting the Letter Grade and the Credit Hours
     for line in f:
-        print(line)
-    return GPA
+        # Split the line on the ","
+        line_array = line.strip().split(",")
+
+        # Set weight = to the letter grade gpa value multiplied by the credit hours
+        weight = grades.get(line_array[1]) * line_array[2]
+
+        # Increment the total weight by this classes weight
+        total_weight += weight
+
+        # Increment the total credit hours by the number of credit hours of this class
+        total_credit_hours += line_array[2]
+
+    gpa = total_weight / total_credit_hours
+
+    return gpa
 
 
 if __name__ == '__main__':
-    calculate_gpa("Test_Files/Test1.csv")
+    total_gpa = calculate_gpa("Test_Files/Test1.csv")
+    print(total_gpa)
