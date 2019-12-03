@@ -52,19 +52,21 @@ def calculate_gpa(file):
         line_array = line.strip().split(",")
 
         # Set weight = to the letter grade gpa value multiplied by the credit hours
-        weight = grades.get(line_array[1]) * int(line_array[2])
+        weight = float(grades.get(line_array[1]) * int(line_array[2]))
 
         # Increment the total weight by this classes weight
-        total_weight += int(weight)
+        total_weight += weight
 
         # Increment the total credit hours by the number of credit hours of this class
         total_credit_hours += int(line_array[2])
 
+    # Do the gpa calculation and round to 2 decimal places
     gpa = round(total_weight / total_credit_hours,2)
 
+    # return the gpa
     return gpa
 
 
 if __name__ == '__main__':
-    total_gpa = calculate_gpa("Test_Files/Test1.csv")
+    total_gpa = calculate_gpa("Test_Files/Test2.csv")
     print(total_gpa)
