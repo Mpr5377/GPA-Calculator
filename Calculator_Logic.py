@@ -68,5 +68,5 @@ def calculate_gpa(file):
 
 
 if __name__ == '__main__':
-    total_gpa = calculate_gpa("Test_Files/Test2.csv")
+    total_gpa = calculate_gpa("Test_Files/Test3.csv")
     print(total_gpa)
