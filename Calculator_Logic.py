@@ -60,7 +60,7 @@ def calculate_gpa(file):
         # Increment the total credit hours by the number of credit hours of this class
         total_credit_hours += int(line_array[2])
 
-    gpa = round(total_weight / total_credit_hours,3)
+    gpa = round(total_weight / total_credit_hours,2)
 
     return gpa
 
