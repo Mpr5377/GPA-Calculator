@@ -22,10 +22,10 @@ grades = {
 }
 
 
-def calculate_gpa():
+def calculate_gpa(file):
     """
     Function: calculate_gpa()
-    :param
+    Parameters: file - Text file to take in letter grade values to be converted
     :return GPA Value on a 4.0 Scale
     Description: Does the following Math to return the GPA value on a 4.0 Scale:
 
@@ -34,8 +34,12 @@ def calculate_gpa():
         ----------------------------------- = GPA
                    Credit Hours
     """
-    pass
+    GPA = 0
+    f = open(file,"r")
+    for line in f:
+        print(line)
+    return GPA
 
 
 if __name__ == '__main__':
-    calculate_gpa()
+    calculate_gpa("Test_Files/Test1.csv")
