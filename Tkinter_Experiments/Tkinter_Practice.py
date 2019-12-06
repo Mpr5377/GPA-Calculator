@@ -14,6 +14,9 @@ https://stackoverflow.com/questions/36575890/how-to-set-a-tkinter-window-to-a-co
 https://www.geeksforgeeks.org/python-gui-tkinter/
 '''
 
+credit_hours = [0,1,2,3,4,5]
+grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "F"]
+
 
 def test():
     buttons = int(input("How many buttons?"))
@@ -39,8 +42,21 @@ def pretty_layout():
     title_bar1 = Label(m, text="Class Name", width=24, font=("Times New Roman", 30)).grid(row=0, column=0)
     title_bar2 = Label(m, text="Credit Hours", width=25, font=("Times New Roman", 30)).grid(row=0, column=1)
     title_bar3 = Label(m, text="Grade", width=25, font=("Times New Roman", 30)).grid(row=0, column=2)
+    for i in range(1, 6):
+        e = Entry(m).grid(row=i, column=0)
+        var = StringVar(m)
+        var.set("-")
+        var2 = StringVar(m)
+        var2.set("-")
+        o = OptionMenu(m, var, *credit_hours).grid(row=i, column=1)
+        o2 = OptionMenu(m, var2, *grades).grid(row=i, column=2)
     m.mainloop()
+
+
+def get_values(row, column):
+    print("Row: " + str(row), "Column: " + str(column))
 
 
 if __name__ == '__main__':
     pretty_layout()
+    get_values(1, 2)
