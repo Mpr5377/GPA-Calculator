@@ -11,13 +11,13 @@ def test():
     m = Tk()
     m.title('GPA Calculator')
     m.wm_minsize(width=1000,height=500)
-    button = Button(m,text="Test", width=25, command=button_function())
+    button = Button(m, text="Test", width=25, command=lambda: button_function("test"))
     button.pack()
     m.mainloop()
 
 
-def button_function():
-    print("Hello")
+def button_function(text):
+    print(text)
 
 
 if __name__ == '__main__':
