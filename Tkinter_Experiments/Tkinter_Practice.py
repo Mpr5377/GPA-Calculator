@@ -34,7 +34,8 @@ def button_function(text,m):
     button = Button(m, text="who knows", height=1, width=25, command=lambda: print("blah"))
     button.place(relx=.5, rely=.5)
 
-
+# Following link may solve issue
+# https://stackoverflow.com/questions/8369560/finding-widgets-on-a-grid-tkinter-module
 def pretty_layout():
     m = Tk()
     m.title('GPA Calculator')
@@ -50,13 +51,14 @@ def pretty_layout():
         var2.set("-")
         o = OptionMenu(m, var, *credit_hours).grid(row=i, column=1)
         o2 = OptionMenu(m, var2, *grades).grid(row=i, column=2)
+    button = Button(m, text="Calculate GPA", command=lambda: get_values(m)).grid(row=6, column=1)
     m.mainloop()
 
 
-def get_values(row, column):
-    print("Row: " + str(row), "Column: " + str(column))
+def get_values(m):
+    print(m.grid_location(1, 0))
 
 
 if __name__ == '__main__':
     pretty_layout()
-    get_values(1, 2)
+    #get_values(1, 2)
