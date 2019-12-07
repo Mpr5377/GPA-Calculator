@@ -50,8 +50,15 @@ def pretty_layout():
         var2.set("-")
         o = OptionMenu(m, var, *credit_hours).grid(row=i, column=1)
         o2 = OptionMenu(m, var2, *grades).grid(row=i, column=2)
-    button = Button(m, text="Calculate GPA", command=lambda: get_values(m)).grid(row=6, column=1)
+    button = Button(m, text="Calculate GPA", command=lambda: calculate_gpa(m)).grid(row=6, column=1)
     m.mainloop()
+
+
+def calculate_gpa(m):
+    x = m.grid_size()[0]
+    y = m.grid_size()[1]
+    print("X: " + str(x))
+    print("Y: " + str(y))
 
 
 def get_values(m):
