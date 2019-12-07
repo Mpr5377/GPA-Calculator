@@ -5,8 +5,6 @@ Description: This file's sole purpose is to just get me familiar with Tkinter so
              it for a front end for the gpa calculator
 """
 from tkinter import *
-
-
 '''
 Useful Links:
 
@@ -34,6 +32,7 @@ def button_function(text,m):
     button = Button(m, text="who knows", height=1, width=25, command=lambda: print("blah"))
     button.place(relx=.5, rely=.5)
 
+
 # Following link may solve issue
 # https://stackoverflow.com/questions/8369560/finding-widgets-on-a-grid-tkinter-module
 def pretty_layout():
@@ -56,7 +55,10 @@ def pretty_layout():
 
 
 def get_values(m):
-    print(m.grid_location(1, 0))
+    for child in m.children.values():
+        info = child.grid_info()
+        if 0 < info['row'] < 6 and info['column'] > 0:
+            print(child['text'])
 
 
 if __name__ == '__main__':
