@@ -71,14 +71,22 @@ def pretty_layout():
 
 def calculate_gpa(grades_list):
     gpa_total = 0
+    hour_total = 0
     for grade in grades_list:
         hours = grade[0]
-        class_gpa = grade_dict.get(grade[1])
-        print(hours,class_gpa)
-        gpa_total += hours * class_gpa
-    gpa_total /= len(grades_list)
+        class_gpa = grade[1]
+        if hours == '-' or class_gpa == '-':
+            pass
+        else:
+            hours = float(hours)
+            class_gpa = float(grade_dict.get(class_gpa))
+            gpa_total += hours * class_gpa
+            hour_total += hours
+    if hour_total is 0:
+        gpa_total = 0
+    else:
+        gpa_total = round(gpa_total/hour_total, 2)
     print(gpa_total)
-
 
 
 def get_values(m):
