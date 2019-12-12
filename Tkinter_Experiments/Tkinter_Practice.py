@@ -55,10 +55,13 @@ def pretty_layout():
 
 
 def calculate_gpa(m):
+    """
     x = m.grid_size()[0]
     y = m.grid_size()[1]
     print("X: " + str(x))
     print("Y: " + str(y))
+    """
+    get_values(m)
 
 
 def get_values(m):
@@ -70,4 +73,3 @@ def get_values(m):
 
 if __name__ == '__main__':
     pretty_layout()
-    #get_values(1, 2)
