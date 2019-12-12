@@ -12,8 +12,23 @@ https://stackoverflow.com/questions/36575890/how-to-set-a-tkinter-window-to-a-co
 https://www.geeksforgeeks.org/python-gui-tkinter/
 '''
 
-credit_hours = [0,1,2,3,4,5]
+credit_hours = [1, 2, 3, 4, 5]
 grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "F"]
+grade_dict = {
+    "A+": 4.0,
+    "A": 4.0,
+    "A-": 3.7,
+    "B+": 3.3,
+    "B": 3.0,
+    "B-": 2.7,
+    "C+": 2.3,
+    "C": 2.0,
+    "C-": 1.7,
+    "D+": 1.3,
+    "D": 1,
+    "E": 0,
+    "F": 0
+}
 
 
 def test():
@@ -50,25 +65,43 @@ def pretty_layout():
         var2.set("-")
         o = OptionMenu(m, var, *credit_hours).grid(row=i, column=1)
         o2 = OptionMenu(m, var2, *grades).grid(row=i, column=2)
-    button = Button(m, text="Calculate GPA", command=lambda: calculate_gpa(m)).grid(row=6, column=1)
+    button = Button(m, text="Calculate GPA", command=lambda: get_values(m)).grid(row=6, column=1)
     m.mainloop()
 
 
-def calculate_gpa(m):
+def calculate_gpa(grades_list):
+    gpa_total = 0
+    for grade in grades_list:
+        hours = grade[0]
+        class_gpa = grade_dict.get(grade[1])
+        print(hours,class_gpa)
+        gpa_total += hours * class_gpa
+    gpa_total /= len(grades_list)
+    print(gpa_total)
+
+
+
+def get_values(m):
     """
     x = m.grid_size()[0]
     y = m.grid_size()[1]
     print("X: " + str(x))
     print("Y: " + str(y))
     """
-    get_values(m)
-
-
-def get_values(m):
+    grades_list = []
+    prev_child = None
     for child in m.children.values():
         info = child.grid_info()
-        if 0 < info['row'] < 6 and info['column'] > 0:
-            print(child['text'])
+        current_row = info['row']
+        current_col = info['column']
+        if 0 < current_row < 6 and current_col > 0:
+            if prev_child is None:
+                pass
+            elif prev_child.grid_info()['row'] == current_row:
+                grade = (prev_child['text'], child['text'])
+                grades_list.append(grade)
+            prev_child = child
+    calculate_gpa(grades_list)
 
 
 if __name__ == '__main__':
