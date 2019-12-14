@@ -102,7 +102,7 @@ def get_values(m):
         info = child.grid_info()
         current_row = info['row']
         current_col = info['column']
-        if 0 < current_row < 6 and current_col > 0:
+        if 0 < int(current_row) < 6 and int(current_col) > 0:
             if prev_child is None:
                 pass
             elif prev_child.grid_info()['row'] == current_row:
