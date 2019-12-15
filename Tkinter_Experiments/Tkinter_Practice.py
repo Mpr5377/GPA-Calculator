@@ -55,6 +55,7 @@ def pretty_layout():
 
 
 def add_class(m):
+    print(m.grid_size())
     y = int(m.grid_size()[1]) - 2
     blah = int(m.grid_size()[1])
     print("Y:", y, blah)
@@ -90,7 +91,7 @@ def calculate_gpa(grades_list,m):
         gpa_total = 0
     else:
         gpa_total = round(gpa_total/hour_total, 2)
-    gpa_label = Label(m, text=gpa_total, width=25, font=("Times New Roman", 30)).grid(row=y+1, column=1)
+    gpa_label = Label(m, text=gpa_total, width=25, font=("Times New Roman", 30)).grid(row=y, column=1)
 
 
 def get_values(m):
