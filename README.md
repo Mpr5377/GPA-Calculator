@@ -1,2 +1,4 @@
 # GPA Calculator
- Not sure what I exactly want to do with this?
+Simple project to get a feel for Python's Tkinter GUI
+-----
+Never said the GUI would be pretty..
