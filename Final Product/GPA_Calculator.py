@@ -5,8 +5,8 @@ Description: This is the final product of this little project. It is a fully fun
              are able to add as many classes as you have, in order to find your gpa.
 """
 from tkinter import *
-credit_hours = [1, 2, 3, 4, 5]
-grades = ["A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "F"]
+credit_hours = ["-", 1, 2, 3, 4, 5]
+grades = ["-", "A", "A-", "B+", "B", "B-", "C+", "C", "C-", "D+", "D", "E", "F"]
 grade_dict = {
     "A+": 4.0,
     "A": 4.0,
