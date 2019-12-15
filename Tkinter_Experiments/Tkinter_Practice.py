@@ -55,21 +55,21 @@ def pretty_layout():
 
 
 def add_class(m):
-    print(m.grid_size())
     y = int(m.grid_size()[1]) - 2
-    blah = int(m.grid_size()[1])
-    print("Y:", y, blah)
     m.grid_slaves(y, 2)[0].destroy()
     m.grid_slaves(y, 0)[0].destroy()
+    m.grid_slaves(y+1, 1)[0].destroy()
     e = Entry(m).grid(row=y, column=0)
     var = StringVar(m)
     var.set("-")
     var2 = StringVar(m)
     var2.set("-")
-    o = OptionMenu(m, var, *credit_hours).grid(row=y-1, column=1)
-    o2 = OptionMenu(m, var2, *grades).grid(row=y-1, column=2)
-    button = Button(m, text="Add Class", command=lambda: add_class(m)).grid(row=y+2, column=0)
-    button2 = Button(m, text="Calculate GPA", command=lambda: get_values(m)).grid(row=y+2, column=2)
+    o = OptionMenu(m, var, *credit_hours).grid(row=y, column=1)
+    o2 = OptionMenu(m, var2, *grades).grid(row=y, column=2)
+    button = Button(m, text="Add Class", command=lambda: add_class(m)).grid(row=y+1, column=0)
+    button2 = Button(m, text="Calculate GPA", command=lambda: get_values(m)).grid(row=y+1, column=2)
+    gpa_label = Label(m, text="N/A", width=25, font=("Times New Roman", 30)).grid(row=y+2, column=1)
+    print("add_class:", m.grid_size())
 
 
 def calculate_gpa(grades_list,m):
@@ -114,7 +114,7 @@ def get_values(m):
                 grade = (prev_child['text'], child['text'])
                 grades_list.append(grade)
             prev_child = child
-    calculate_gpa(grades_list,m)
+    calculate_gpa(grades_list, m)
 
 
 if __name__ == '__main__':
